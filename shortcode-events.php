@@ -19,9 +19,17 @@ function output_wechange_events( $atts ) {
 	);
 
 	$url        = $atts['url'];
-	$parameters = $atts['parameters'];
+	$parameters = $atts['parameters'];	
+
+	// MvG:
+	if($atts['upcoming']){ 
+		$upcoming='upcoming=true';
+	}else{
+		$upcoming='upcoming=false';
+	}
 	
-	$api_url  = $url . '/api/v2/events/?' . $parameters;
+	$api_url  = $url . 'api/v2/events/?' . $upcoming . '&' .$parameters;
+	//$api_url  = $url . 'api/v2/events/?' . $parameters;
 
 	$url_hash = wp_hash( $api_url, 'nonce' );
 
