@@ -1,17 +1,25 @@
 WECHANGE COLLECTION
 ===================
 
-This plugin combines some nice utilities to integrate WECHANGE with your WordPress site.
+WECHANGE works very well with Wordpress CMS. Usually the homepage and all informational pages are powered by Wordpress. Therefor we recommend to run Wordpress in a subdirectory (e.g. wechange.de/cms). We usually use the Divi theme but of course you're free to choose.
+
+In order to integrate WECHANGE data into Wordpress pages, you can
+
+- install our projects shortcode plugin: https://github.com/wechange-eg/wordpress-plugin (see below)
+- reuse and adapt our code snippets at https://gist.github.com/simonline/f3ded7504701ce0594992184b6729246
+- make use of our API directly within your Javascript code or custom Wordpress plugin: https://wechange.de/swagger/
+
+## Wechange-Wordpress-Plugin
+This plugin combines some nice utilities to integrate WECHANGE with your WordPress site and introduces a shortcode to display projects (and/or groups) from a WECHANGE platform.
 
 Currently there is:
 - a shortcode for fetch statistics
-- a shortcode to show projects
+- a shortcode to show projects / groups
 - a shortcode to show notes
 - a shortcode to show events
 - a utility to redirect logged in users directly to the WECHANGE platform
 
-SETUP
------
+### SETUP
 
 There is a Constant needed in the wp-config file called WECHANGE_BASE_URL
 define it like this
@@ -36,3 +44,18 @@ add_theme_support( 'wechange-collection-login-status' );
 All template files can be overwritten - see the template files for more information.
 
 The plugin can be translated. See the language folder.
+
+### Usage
+
+Sample:
+```
+[wechange_projects parent=1002 tags=2018 limit=5 view='row' order='created']
+```
+
+### Parameters
+
+- parent: Shows only projects that belong to a group
+- tags: Shows only projects that have a keyword
+- limit: Limits the number of displayed projects
+- view: Sets the view ('grid' for multiline, 'row' for single-line)
+- order: Defines the sorting ('created' for "most recent" projects first)
