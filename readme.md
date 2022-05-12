@@ -19,7 +19,7 @@ Currently there are:
 - a shortcode to show events
 - a utility to redirect logged in users directly to the WECHANGE platform
 
-### SETUP
+## SETUP
 
 There is a Constant needed in the wp-config file called WECHANGE_BASE_URL
 define it like this
@@ -37,7 +37,7 @@ All template files can be overwritten - see the template files for more informat
 The plugin can be translated. See the language folder.
 
 
-### What are the shortcodes actually doing?
+## What are the shortcodes actually doing?
 
 When you place a shortcode in your side, the shortcode will
 - Call the API of your WECHANGE installation (defined via Constant or manually set)
@@ -46,9 +46,9 @@ When you place a shortcode in your side, the shortcode will
 - The result is echoed at the place you put the shortcode
 
 
-### Usage
+## Usage
 
-#### Statistics Shortcode
+### Statistics Shortcode
 
 This shortcode will echo one plain number (or an error message) - this number can be styled through the surrounding element who ever you want. 
 
@@ -73,13 +73,13 @@ This shortcode will echo one plain number (or an error message) - this number ca
 
 If ```WECHANGE_SCOPE``` is set, than the statistics are for this partner only, not for all partners on that installation.
 
-**Available Filters:**  
+**available filters**  
 - cache time
 ```php
 apply_filters( 'wechange_collection_cache_time_statistics', 'addValueInSecondsHere' )
 ```
 
-#### Notes Shortcode
+### Notes Shortcode
 
 Usage like
 ```
@@ -90,14 +90,14 @@ There are two possible parameters
 - 'url' - is not needed if `WECHANGE_BASE_URL` is set
 - 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items and just take notes from group 534 - see API documentation for further parameters
 
-**available filter**
+**available filters**
 ```php
 apply_filters( 'wechange_collection_cache_time_notes', 'TimeInSecondsHere' ); // caching time in seconds
 apply_filters( 'wechange_collection_notes_html_before', '<section class="wechange-events">'); // html before the listing of items
 apply_filters( 'wechange_collection_notes_html_after', '</section>'); // html after the listing of items
 ```
 
-#### Notes Projects
+### Projects Shortcode
 
 Usage like
 ```
@@ -108,14 +108,33 @@ There are two possible parameters
 - 'url' - is not needed if `WECHANGE_BASE_URL` is set
 - 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items - see API documentation for further parameters
 
-**available filter**
+**available filters**
 ```php
 apply_filters( 'wechange_collection_cache_time_projects', 'TimeInSecondsHere' ); // caching time in seconds
 apply_filters( 'wechange_collection_projects_html_before', '<section class="wechange-events">'); // html before the listing of items
 apply_filters( 'wechange_collection_projects_html_after', '</section>'); // html after the listing of items
 ```
 
-#### Events Shortcode
+### Conferences Shortcode
+
+Usage like
+```
+[wechange_conferences parameters="limit=3"]
+```
+
+There are two possible parameters
+- 'url' - is not needed if `WECHANGE_BASE_URL` is set
+- 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items - see API documentation for further parameters
+
+**available filters**
+```php
+apply_filters( 'wechange_collection_cache_time_conferences', 'TimeInSecondsHere' ); // caching time in seconds
+apply_filters( 'wechange_collection_conferences_html_before', '<section class="wechange-events">'); // html before the listing of items
+apply_filters( 'wechange_collection_conferences_html_after', '</section>'); // html after the listing of items
+```
+
+
+### Events Shortcode
 
 Usage like
 ```
@@ -127,21 +146,21 @@ There are three possible parameters
 - 'upcoming' - just show events in the future (default: true - only show events in the future)
 - 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items - see API documentation for further parameters
 
-**available filter**
+**available filters**
 ```php
 apply_filters( 'wechange_collection_cache_time_events', 'TimeInSecondsHere' ); // caching time in seconds
 apply_filters( 'wechange_collection_events_html_before', '<section class="wechange-events">'); // html before the listing of items
 apply_filters( 'wechange_collection_events_html_after', '</section>'); // html after the listing of items
 ```
 
-#### Plugin wide filters
+### Plugin wide filters
 
 ```php
 apply_filters( 'wechange_collection_cache_time', 2 * HOUR_IN_SECONDS ); // standard caching time are 2 hours - while building maybe set to zero
 ```
 
 
-#### Redirect users who are logged in in WECHANGE from WordPress to WECHANGE
+### Redirect users who are logged in in WECHANGE from WordPress to WECHANGE
 
 activate by adding
 The utility to redirect logged in users to the platform is disabled by default. 
