@@ -32,19 +32,9 @@ If you intstallation has multiple partners you can define a scope - eg. for sepa
 define('WECHANGE_SCOPE', 'thispartner');
 ```
 
-Default caching time for content that is fetched from the API is 2 hours.
-There are filter to overwrite this.
-
-The utility to redirect logged in users to the platform is disabled by default. 
-Activate it like this in your theme:
-```php
-add_theme_support( 'wechange-collection-login-status' );
-```
-
 All template files can be overwritten - see the template files for more information.
 
 The plugin can be translated. See the language folder.
-
 
 
 ### What are the shortcodes actually doing?
@@ -88,3 +78,14 @@ If ```WECHANGE_SCOPE``` is set, than the statistics are for this partner only, n
 ```php
 apply_filters( 'wechange_collection_cache_time_statistics', 'addValueInSecondsHere' )
 ```
+
+
+#### Redirect users who are logged in in WECHANGE from WordPress to WECHANGE
+
+activate by adding
+The utility to redirect logged in users to the platform is disabled by default. 
+Activate it by putting this code eg in your themes functions.php:
+```php
+add_theme_support( 'wechange-collection-login-status' );
+```
+This will embed a small JS file.
