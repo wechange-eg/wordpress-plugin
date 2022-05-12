@@ -3,7 +3,7 @@
 /*
 Plugin Name:  WECHANGE Collection
 Description:  A collection of helpers eg. shortcodes to support connection to WECHANGE
-Version:      0.9.0
+Version:      0.10.0
 Author:       Sebastian Gärtner
 Text Domain:  wechange-collection
 */
@@ -20,4 +20,5 @@ require_once WECHANGE_COLLECTION_DIR . 'shortcode-statistics.php';
 require_once WECHANGE_COLLECTION_DIR . 'shortcode-projects.php';
 require_once WECHANGE_COLLECTION_DIR . 'shortcode-notes.php';
 require_once WECHANGE_COLLECTION_DIR . 'shortcode-events.php';
+require_once WECHANGE_COLLECTION_DIR . 'shortcode-conferences.php';
 require_once WECHANGE_COLLECTION_DIR . 'login-status.php';
