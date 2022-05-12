@@ -1,15 +1,15 @@
 WECHANGE COLLECTION
 ===================
 
-WECHANGE works very well with Wordpress CMS. Usually the homepage and all informational pages are powered by Wordpress. Therefor we recommend to run Wordpress in a subdirectory (e.g. wechange.de/cms). We usually use the Divi theme but of course you're free to choose.
+WECHANGE works very well with WordPress CMS. Usually the homepage and all informational pages are powered by WordPress. Therefor we recommend to run WordPress in a subdirectory (e.g. wechange.de/cms). We usually use the Divi theme but of course you're free to choose.
 
-In order to integrate WECHANGE data into Wordpress pages, you can
+In order to integrate WECHANGE data into WordPress pages, you can
 
 - install our projects shortcode plugin: https://github.com/wechange-eg/wordpress-plugin (see below)
 - reuse and adapt our code snippets at https://gist.github.com/simonline/f3ded7504701ce0594992184b6729246
-- make use of our API directly within your Javascript code or custom Wordpress plugin: https://wechange.de/swagger/
+- make use of our API directly within your Javascript code or custom WordPress plugin: https://wechange.de/swagger/
 
-## Wechange-Wordpress-Plugin
+## Wechange-WordPress-Plugin
 This plugin combines some nice utilities to integrate WECHANGE with your WordPress site and introduces a shortcode to display projects (and/or groups) from a WECHANGE platform.
 
 Currently there is:
