@@ -12,7 +12,7 @@ In order to integrate WECHANGE data into WordPress pages, you can
 ## Wechange-WordPress-Plugin
 This plugin combines some nice utilities to integrate WECHANGE with your WordPress site and introduces a shortcode to display projects (and/or groups) from a WECHANGE platform.
 
-Currently there is:
+Currently there are:
 - a shortcode for fetch statistics
 - a shortcode to show projects / groups
 - a shortcode to show notes
@@ -45,17 +45,46 @@ All template files can be overwritten - see the template files for more informat
 
 The plugin can be translated. See the language folder.
 
+
+
+### What are the shortcodes actually doing?
+
+When you place a shortcode in your side, the shortcode will
+- Call the API of your WECHANGE installation (defined via Constant or manually set)
+- API response will be cached (per default for 2 hours).
+- The response is themed through template files (can be overwritten to your preference)
+- The result is echoed at the place you put the shortcode
+
+
 ### Usage
 
-Sample:
-```
-[wechange_projects parent=1002 tags=2018 limit=5 view='row' order='created']
+#### Statistics
+
+This shortcode will echo one plain number (or an error message) - this number can be styled through the surrounding element who ever you want. 
+
+```php
+[wechange-statistics attribute="SomeAttribute"]
 ```
 
-### Parameters
+**Known attributes:**
+- number of active users:
+```
+[wechange-statistics attribute="users_active"]
+``` 
+- number of projects:
+```
+[wechange-statistics attribute="projects"]
+``` 
+- number of notes:
+```
+[wechange-statistics attribute="notes"]
+``` 
 
-- parent: Shows only projects that belong to a group
-- tags: Shows only projects that have a keyword
-- limit: Limits the number of displayed projects
-- view: Sets the view ('grid' for multiline, 'row' for single-line)
-- order: Defines the sorting ('created' for "most recent" projects first)
+
+If ```WECHANGE_SCOPE``` is set, than the statistics are for this partner only, not for all partners on that installation.
+
+**Available Filters:**  
+- cache time
+```php
+apply_filters( 'wechange_collection_cache_time_statistics', 'addValueInSecondsHere' )
+```
