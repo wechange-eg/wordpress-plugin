@@ -48,7 +48,7 @@ When you place a shortcode in your side, the shortcode will
 
 ### Usage
 
-#### Statistics
+#### Statistics Shortcode
 
 This shortcode will echo one plain number (or an error message) - this number can be styled through the surrounding element who ever you want. 
 
@@ -77,6 +77,67 @@ If ```WECHANGE_SCOPE``` is set, than the statistics are for this partner only, n
 - cache time
 ```php
 apply_filters( 'wechange_collection_cache_time_statistics', 'addValueInSecondsHere' )
+```
+
+#### Notes Shortcode
+
+Usage like
+```
+[wechange_notes parameters="limit=3&group=534"]
+```
+
+There are two possible parameters
+- 'url' - is not needed if `WECHANGE_BASE_URL` is set
+- 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items and just take notes from group 534 - see API documentation for further parameters
+
+**available filter**
+```php
+apply_filters( 'wechange_collection_cache_time_notes', 'TimeInSecondsHere' ); // caching time in seconds
+apply_filters( 'wechange_collection_notes_html_before', '<section class="wechange-events">'); // html before the listing of items
+apply_filters( 'wechange_collection_notes_html_after', '</section>'); // html after the listing of items
+```
+
+#### Notes Projects
+
+Usage like
+```
+[wechange_projects parameters="limit=3"]
+```
+
+There are two possible parameters
+- 'url' - is not needed if `WECHANGE_BASE_URL` is set
+- 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items - see API documentation for further parameters
+
+**available filter**
+```php
+apply_filters( 'wechange_collection_cache_time_projects', 'TimeInSecondsHere' ); // caching time in seconds
+apply_filters( 'wechange_collection_projects_html_before', '<section class="wechange-events">'); // html before the listing of items
+apply_filters( 'wechange_collection_projects_html_after', '</section>'); // html after the listing of items
+```
+
+#### Events Shortcode
+
+Usage like
+```
+[wechange_events parameters="limit=3" upcoming="true"]
+```
+
+There are three possible parameters
+- 'url' - is not needed if `WECHANGE_BASE_URL` is set
+- 'upcoming' - just show events in the future (default: true - only show events in the future)
+- 'parameters' - which is attached to the basic API call. In this example we limit the answer to 3 items - see API documentation for further parameters
+
+**available filter**
+```php
+apply_filters( 'wechange_collection_cache_time_events', 'TimeInSecondsHere' ); // caching time in seconds
+apply_filters( 'wechange_collection_events_html_before', '<section class="wechange-events">'); // html before the listing of items
+apply_filters( 'wechange_collection_events_html_after', '</section>'); // html after the listing of items
+```
+
+#### Plugin wide filters
+
+```php
+apply_filters( 'wechange_collection_cache_time', 2 * HOUR_IN_SECONDS ); // standard caching time are 2 hours - while building maybe set to zero
 ```
 
 
