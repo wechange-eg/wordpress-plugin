@@ -3,8 +3,8 @@
 /*
 Plugin Name:  WECHANGE Collection
 Description:  A collection of helpers eg. shortcodes to support connection to WECHANGE
-Version:      0.10.0
-Author:       Sebastian Gärtner
+Version:      1.1.0
+Author:       Sebastian Gärtner for WECHANGE
 Text Domain:  wechange-collection
 */
 

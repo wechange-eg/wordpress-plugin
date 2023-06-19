@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WECHANGE Collection\n"
-"POT-Creation-Date: 2020-09-10 18:24+0200\n"
+"POT-Creation-Date: 2020-10-22 17:55+0200\n"
 "PO-Revision-Date: 2020-09-10 18:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Please define attribute to return statistic"
 msgstr ""
 
-#: shortcode-statistics.php:34
+#: shortcode-statistics.php:39
 msgid "Please check attribute. Attribute doesn't seem to exist"
 msgstr ""
 
@@ -48,5 +48,5 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Sebastian Gärtner"
+msgid "Sebastian Gärtner for WECHANGE"
 msgstr ""

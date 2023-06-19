@@ -23,14 +23,15 @@ function output_wechange_projects( $atts ) {
 	$api_url  = $url . '/api/v2/projects/?' . $parameters;
 
 	$url_hash = wp_hash( $api_url, 'nonce' );
+	$lang     = apply_filters( 'wpml_current_language', NULL ); // WPML support
 
-	if ( false === ( $projects_html = get_transient( 'wechance-collection-projects-' . $url_hash ) ) ) {
+	if ( false === ( $projects_html = get_transient( 'wechance-collection-projects-' . $url_hash . $lang ) ) ) {
 		// It wasn't there, so regenerate the data and save the transient
 
 		$projects_html = get_projects_from_api( $api_url );
 
 		set_transient( 
-			'wechance-collection-projects-' . $url_hash , 
+			'wechance-collection-projects-' . $url_hash . $lang, 
 			$projects_html, 
 			apply_filters( 'wechange_collection_cache_time_projects', wechange_collection_cache_time() )
 		);

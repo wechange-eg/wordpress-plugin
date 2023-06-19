@@ -31,13 +31,14 @@ function output_wechange_conferences( $atts ) {
 	$api_url  = $url . '/api/v2/public_conferences/?' . $parameters;
 
 	$url_hash = wp_hash( $api_url, 'nonce' );
+	$lang     = apply_filters( 'wpml_current_language', NULL ); // WPML support
 
-	if ( false === ( $conferences_html = get_transient( 'wechance-collection-conferences-' . $url_hash ) ) ) {
+	if ( false === ( $conferences_html = get_transient( 'wechance-collection-conferences-' . $url_hash . $lang ) ) ) {
 		// It wasn't there, so regenerate the data and save the transient
 		$conferences_html = get_conferences_from_api( $api_url );
 
 		set_transient(
-			'wechance-collection-conferences-' . $url_hash ,
+			'wechance-collection-conferences-' . $url_hash . $lang,
 			$conferences_html,
 			apply_filters( 'wechange_collection_cache_time_conferences', wechange_collection_cache_time() )
 		);

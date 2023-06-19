@@ -7,10 +7,11 @@
 
 $event = $data->event;
 
-$text      = $event->text; // already escaped by markdown parser
+$note      = $event->note; // already escaped by markdown parser
 $from_date = $event->from_date;
 $to_date   = $event->to_date;
 $title     = $event->title;
+$image     = $event->image;
 
 $time_format = get_option('date_format') . ' ' . get_option('time_format');
 

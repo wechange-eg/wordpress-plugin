@@ -23,13 +23,14 @@ function output_wechange_notes( $atts ) {
 	$api_url  = $url . '/api/v2/notes/?' . $parameters;
 
 	$url_hash = wp_hash( $api_url, 'nonce' );
+	$lang     = apply_filters( 'wpml_current_language', NULL ); // WPML support
 
-	if ( false === ( $notes_html = get_transient( 'wechance-collection-notes-' . $url_hash ) ) ) {
+	if ( false === ( $notes_html = get_transient( 'wechance-collection-notes-' . $url_hash . $lang ) ) ) {
 		// It wasn't there, so regenerate the data and save the transient
 		$notes_html = get_notes_from_api( $api_url );
 
 		set_transient(
-			'wechance-collection-notes-' . $url_hash ,
+			'wechance-collection-notes-' . $url_hash . $lang,
 			$notes_html,
 			apply_filters( 'wechange_collection_cache_time_notes', wechange_collection_cache_time() )
 		);

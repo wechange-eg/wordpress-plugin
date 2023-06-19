@@ -19,26 +19,26 @@ function output_wechange_events( $atts ) {
 	);
 
 	$url        = $atts['url'];
-	$parameters = $atts['parameters'];	
+	$parameters = $atts['parameters'];
 
-	// MvG:
-	if($atts['upcoming']){ 
-		$upcoming='upcoming=true';
-	}else{
-		$upcoming='upcoming=false';
+	$scope = '';
+	if ( defined( 'WECHANGE_SCOPE' ) && ! empty( trim( 'WECHANGE_SCOPE' ) ) ) {
+		$scope = '&managed_tag=' . trim( WECHANGE_SCOPE );
 	}
+
+	$parameters = $parameters . $scope;
 	
-	$api_url  = $url . 'api/v2/events/?' . $upcoming . '&' .$parameters;
-	//$api_url  = $url . 'api/v2/events/?' . $parameters;
+	$api_url  = $url . '/api/v2/events/?' . $parameters;
 
 	$url_hash = wp_hash( $api_url, 'nonce' );
+	$lang     = apply_filters( 'wpml_current_language', NULL ); // WPML support
 
-	if ( false === ( $events_html = get_transient( 'wechance-collection-events-' . $url_hash ) ) ) {
+	if ( false === ( $events_html = get_transient( 'wechance-collection-events-' . $url_hash . $lang ) ) ) {
 		// It wasn't there, so regenerate the data and save the transient
 		$events_html = get_events_from_api( $api_url );
 
 		set_transient(
-			'wechance-collection-events-' . $url_hash ,
+			'wechance-collection-events-' . $url_hash . $lang ,
 			$events_html,
 			apply_filters( 'wechange_collection_cache_time_events', wechange_collection_cache_time() )
 		);
@@ -94,7 +94,7 @@ function get_event_html( $event ) {
 	ob_start(); 
 
 	$Parsedown  = new \Parsedown();
-	$event->text = $Parsedown->setSafeMode(true)->text( $event->text );
+	$event->note = $Parsedown->setSafeMode(true)->text( $event->note );
 
 	$template_loader = new WechangeCollection_Template_Loader;
 	$template_loader->set_template_data( [ 'event' => $event ] )
