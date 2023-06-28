@@ -28,7 +28,8 @@ $avatar      = $project->avatar;
     <?php
         else :
     ?>
-        <img src="https://placekitten.com/400/250" width="400" height="250">
+    <br><br>
+
     <?php 
         endif; 
     ?>
