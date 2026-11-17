@@ -10,7 +10,7 @@ function output_wechange_notes( $atts ) {
 
 	$atts = shortcode_atts(
 		array(
-			'url'        => trailingslashit( WECHANGE_BASE_URL ),
+			'url'        => untrailingslashit( WECHANGE_BASE_URL ),
 			'parameters' => '',
 		),
 		$atts,
