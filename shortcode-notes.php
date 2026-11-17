@@ -52,7 +52,6 @@ function get_notes_from_api( $url ) {
 	curl_setopt($handle, CURLOPT_URL, $url);
 	$result = curl_exec($handle);
 	$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-	curl_close($handle);
 	if ($httpCode == 200) {
 		$result = json_decode($result);
 		// Add domain to each note
